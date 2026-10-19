@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Jultomten i Vega  | Julen 2026</title>
+  <title>Jultomten i Vega | Julen 2026</title>
   <meta name="description" content="Boka ett mysigt jultomtebesök i Vega på julafton 2026. Se upplägg, priser och skicka en bokningsförfrågan.">
 
   <style>
@@ -15,18 +14,11 @@
       --gold: #e8c77b;
       --cream: #fff8ec;
       --muted: #c6d1c9;
-      --panel: rgba(255, 255, 255, 0.065);
+      --panel: rgba(255,255,255,.065);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Georgia, "Times New Roman", serif;
@@ -35,16 +27,8 @@
       line-height: 1.7;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      object-fit: cover;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
 
     .announcement {
       padding: 9px 16px;
@@ -52,16 +36,16 @@
       background: var(--red);
       color: white;
       font-family: Arial, sans-serif;
-      font-size: 0.86rem;
-      letter-spacing: 0.04em;
+      font-size: .86rem;
+      letter-spacing: .04em;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(16, 43, 34, 0.96);
-      border-bottom: 1px solid rgba(232, 199, 123, 0.2);
+      background: rgba(16,43,34,.96);
+      border-bottom: 1px solid rgba(232,199,123,.2);
       backdrop-filter: blur(12px);
     }
 
@@ -86,17 +70,15 @@
       flex-wrap: wrap;
       gap: 22px;
       font-family: Arial, sans-serif;
-      font-size: 0.9rem;
+      font-size: .9rem;
     }
 
-    .nav-links a:hover {
-      color: var(--gold);
-    }
+    .nav-links a:hover { color: var(--gold); }
 
     .hero {
       min-height: 640px;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.05fr .95fr;
       align-items: center;
       gap: 55px;
       max-width: 1150px;
@@ -107,22 +89,20 @@
     .eyebrow {
       color: var(--gold);
       text-transform: uppercase;
-      letter-spacing: 0.17em;
+      letter-spacing: .17em;
       font-family: Arial, sans-serif;
-      font-size: 0.77rem;
+      font-size: .77rem;
       font-weight: bold;
     }
 
     h1 {
       margin: 20px 0;
-      font-size: clamp(2.8rem, 5.7vw, 5rem);
+      font-size: clamp(2.8rem,5.7vw,5rem);
       line-height: 1.06;
       font-weight: normal;
     }
 
-    h1 span {
-      color: var(--gold);
-    }
+    h1 span { color: var(--gold); }
 
     .hero-copy {
       max-width: 550px;
@@ -147,32 +127,26 @@
       background: var(--gold);
       color: var(--green);
       font-family: Arial, sans-serif;
-      font-size: 0.92rem;
+      font-size: .92rem;
       font-weight: bold;
       cursor: pointer;
-      transition: transform 0.2s, opacity 0.2s;
+      transition: transform .2s, opacity .2s;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
-    }
+    .button:hover { transform: translateY(-2px); opacity: .9; }
 
     .button.secondary {
       background: transparent;
       color: var(--cream);
-      border-color: rgba(255, 248, 236, 0.4);
+      border-color: rgba(255,248,236,.4);
     }
 
-    .hero-photo {
-      position: relative;
-      min-height: 490px;
-    }
+    .hero-photo { position: relative; min-height: 490px; }
 
     .hero-photo img {
       height: 490px;
       border-radius: 180px 180px 10px 10px;
-      border: 1px solid rgba(232, 199, 123, 0.5);
+      border: 1px solid rgba(232,199,123,.5);
       background: var(--green-light);
     }
 
@@ -183,9 +157,9 @@
       max-width: 260px;
       padding: 16px 20px;
       background: var(--red);
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,.2);
       border-radius: 5px;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 35px rgba(0,0,0,.25);
     }
 
     .photo-label strong {
@@ -199,15 +173,8 @@
       font-family: Arial, sans-serif;
     }
 
-    section {
-      padding: 85px 24px;
-      scroll-margin-top: 85px;
-    }
-
-    .section-inner {
-      max-width: 1100px;
-      margin: auto;
-    }
+    section { padding: 85px 24px; scroll-margin-top: 85px; }
+    .section-inner { max-width: 1100px; margin: auto; }
 
     .section-heading {
       max-width: 680px;
@@ -217,32 +184,27 @@
 
     h2 {
       margin: 10px 0 15px;
-      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-size: clamp(2rem,4vw,3.3rem);
       font-weight: normal;
       line-height: 1.2;
     }
 
-    .section-heading p,
-    .muted {
-      color: var(--muted);
-    }
+    .section-heading p, .muted { color: var(--muted); }
 
     .features {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 20px;
     }
 
     .feature {
       padding: 28px;
       background: var(--panel);
-      border: 1px solid rgba(232,199,123,0.16);
+      border: 1px solid rgba(232,199,123,.16);
       border-radius: 8px;
     }
 
-    .feature-icon {
-      font-size: 2rem;
-    }
+    .feature-icon { font-size: 2rem; }
 
     h3 {
       margin: 12px 0;
@@ -250,18 +212,12 @@
       font-weight: normal;
     }
 
-    .feature p {
-      color: var(--muted);
-      font-size: 0.97rem;
-    }
-
-    .pricing-section {
-      background: #0b211a;
-    }
+    .feature p { color: var(--muted); font-size: .97rem; }
+    .pricing-section { background: #0b211a; }
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 20px;
       align-items: stretch;
     }
@@ -271,13 +227,13 @@
       flex-direction: column;
       padding: 30px 26px;
       background: var(--panel);
-      border: 1px solid rgba(232,199,123,0.23);
+      border: 1px solid rgba(232,199,123,.23);
       border-radius: 8px;
     }
 
     .price-card.featured {
       border: 2px solid var(--gold);
-      background: rgba(232,199,123,0.08);
+      background: rgba(232,199,123,.08);
     }
 
     .price {
@@ -287,36 +243,22 @@
       line-height: 1.2;
     }
 
-    .price-card p,
-    .price-card li {
+    .price-card p, .price-card li {
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: .96rem;
     }
 
-    .price-card ul {
-      list-style: none;
-      margin: 20px 0 25px;
-    }
-
-    .price-card li {
-      margin: 9px 0;
-    }
-
-    .price-card li::before {
-      content: "✦ ";
-      color: var(--gold);
-    }
-
-    .price-card .button {
-      margin-top: auto;
-    }
+    .price-card ul { list-style: none; margin: 20px 0 25px; }
+    .price-card li { margin: 9px 0; }
+    .price-card li::before { content: "✦ "; color: var(--gold); }
+    .price-card .button { margin-top: auto; }
 
     .price-note {
       max-width: 750px;
       margin: 28px auto 0;
       text-align: center;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: .9rem;
     }
 
     .equipment {
@@ -329,46 +271,38 @@
     .equipment img {
       height: 410px;
       border-radius: 8px;
-      border: 1px solid rgba(232,199,123,0.3);
+      border: 1px solid rgba(232,199,123,.3);
       background: var(--green-light);
     }
 
-    .equipment-list {
-      list-style: none;
-      margin: 22px 0;
-    }
+    .equipment-list { list-style: none; margin: 22px 0; }
 
     .equipment-list li {
       padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
     }
 
-    .equipment-list li::before {
-      content: "🎄 ";
-    }
+    .equipment-list li::before { content: "🎄 "; }
 
     .booking-section {
       background:
-        linear-gradient(rgba(12,35,27,0.94), rgba(12,35,27,0.97)),
+        linear-gradient(rgba(12,35,27,.94),rgba(12,35,27,.97)),
         url("jul-bakgrund.jpg") center / cover;
     }
 
     .booking-layout {
       display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
+      grid-template-columns: .8fr 1.2fr;
       gap: 45px;
       align-items: start;
     }
 
-    .booking-info p {
-      color: var(--muted);
-      margin: 15px 0;
-    }
+    .booking-info p { color: var(--muted); margin: 15px 0; }
 
     form {
       padding: 30px;
-      background: rgba(255,255,255,0.055);
-      border: 1px solid rgba(232,199,123,0.25);
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(232,199,123,.25);
       border-radius: 8px;
     }
 
@@ -382,52 +316,39 @@
       display: block;
       margin: 13px 0 6px;
       font-family: Arial, sans-serif;
-      font-size: 0.9rem;
+      font-size: .9rem;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,.2);
       border-radius: 4px;
       background: #18382c;
       color: white;
       font: inherit;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       outline: 2px solid var(--gold);
       outline-offset: 1px;
     }
 
-    select option {
-      background: var(--green);
-    }
-
-    textarea {
-      min-height: 115px;
-      resize: vertical;
-    }
+    select option { background: var(--green); }
+    textarea { min-height: 115px; resize: vertical; }
 
     .form-note {
       margin-top: 14px;
       color: var(--muted);
       font-family: Arial, sans-serif;
-      font-size: 0.8rem;
+      font-size: .8rem;
     }
 
-    .faq {
-      max-width: 800px;
-      margin: auto;
-    }
+    .faq { max-width: 800px; margin: auto; }
 
     details {
       padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
+      border-bottom: 1px solid rgba(255,255,255,.15);
     }
 
     summary {
@@ -436,10 +357,7 @@
       font-size: 1.15rem;
     }
 
-    details p {
-      margin-top: 12px;
-      color: var(--muted);
-    }
+    details p { margin-top: 12px; color: var(--muted); }
 
     footer {
       padding: 35px 24px;
@@ -447,12 +365,10 @@
       background: #091a14;
       color: var(--muted);
       font-family: Arial, sans-serif;
-      font-size: 0.87rem;
+      font-size: .87rem;
     }
 
-    footer a {
-      color: var(--gold);
-    }
+    footer a { color: var(--gold); }
 
     .footer-logo {
       margin-bottom: 8px;
@@ -462,43 +378,14 @@
     }
 
     @media (max-width: 800px) {
-      .hero,
-      .equipment,
-      .booking-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        gap: 35px;
-        padding-top: 50px;
-      }
-
-      .hero-photo {
-        min-height: 400px;
-        margin: 0 10px;
-      }
-
-      .hero-photo img {
-        height: 400px;
-      }
-
-      .photo-label {
-        left: -8px;
-      }
-
-      .features,
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        gap: 12px;
-        font-size: 0.82rem;
-      }
-
-      .logo {
-        font-size: 1rem;
-      }
+      .hero, .equipment, .booking-layout { grid-template-columns: 1fr; }
+      .hero { gap: 35px; padding-top: 50px; }
+      .hero-photo { min-height: 400px; margin: 0 10px; }
+      .hero-photo img { height: 400px; }
+      .photo-label { left: -8px; }
+      .features, .pricing-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 12px; font-size: .82rem; }
+      .logo { font-size: 1rem; }
     }
 
     @media (max-width: 480px) {
@@ -508,33 +395,15 @@
         flex-direction: column;
       }
 
-      .hero {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      section {
-        padding: 60px 18px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      form {
-        padding: 20px;
-      }
+      .hero { padding-left: 18px; padding-right: 18px; }
+      section { padding: 60px 18px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      form { padding: 20px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        transition: none !important;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
@@ -560,35 +429,23 @@
     <section class="hero" id="hem">
       <div>
         <div class="eyebrow">En magisk jul hemma hos er</div>
-
-        <h1>
-          Ho, ho, ho!<br>
-          <span>Tomten kommer!</span>
-        </h1>
-
+        <h1>Ho, ho, ho!<br><span>Tomten kommer!</span></h1>
         <p class="hero-copy">
-          Gör julafton lite extra speciell med ett mysigt
-          tomtebesök hemma hos er. Jag besöker familjer i
-          Vega och hjälper till att skapa en
-          varm och minnesvärd julstund för både stora och små.
+          Gör julafton lite extra speciell med ett mysigt tomtebesök hemma hos er.
+          Jag besöker familjer i Vega och hjälper till att skapa en varm och
+          minnesvärd julstund för både stora och små.
         </p>
-
         <div class="actions">
           <a class="button" href="#boka">Fråga om bokning</a>
           <a class="button secondary" href="#priser">Se priser</a>
         </div>
-
-        <p class="muted" style="margin-top:22px;font-size:0.9rem">
+        <p class="muted" style="margin-top:22px;font-size:.9rem">
           📍 Vega · Julafton 2026
         </p>
       </div>
 
       <div class="hero-photo">
-        <img
-          src="tomten-portratt.jpg"
-          alt="Tomten i sin röda tomtedräkt"
-          fetchpriority="high"
-        >
+        <img src="tomten-portratt.jpg" alt="Tomten i sin röda tomtedräkt" fetchpriority="high">
         <div class="photo-label">
           <strong>En jul att minnas</strong>
           <small>Personligt tomtebesök hemma hos er</small>
@@ -601,10 +458,7 @@
         <div class="section-heading">
           <div class="eyebrow">Ett besök fullt av julkänsla</div>
           <h2>Så går tomtebesöket till</h2>
-          <p>
-            Ett enkelt och stämningsfullt besök där
-            julklapparna och familjen står i centrum.
-          </p>
+          <p>Ett enkelt och stämningsfullt besök där julklapparna och familjen står i centrum.</p>
         </div>
 
         <div class="features">
@@ -612,9 +466,8 @@
             <div class="feature-icon">🛷</div>
             <h3>Tomten anländer</h3>
             <p>
-              Vill ni göra det lite extra magiskt kan tomten
-              komma gående runt trädgården och leta efter
-              rätt hus innan det knackar på.
+              För ett extra magiskt intryck kan tomten komma gående utifrån,
+              vinka till familjen och knacka på dörren. Upplägget bestäms i förväg.
             </p>
           </article>
 
@@ -622,9 +475,8 @@
             <div class="feature-icon">🔔</div>
             <h3>Ho, ho, ho!</h3>
             <p>
-              Tomten hälsar på familjen, pratar lite och
-              bjuder på klassisk julstämning vid dörren
-              eller på den plats ni har kommit överens om.
+              Tomten hälsar på familjen, pratar lite och skapar klassisk julstämning
+              vid dörren eller på den plats ni kommit överens om.
             </p>
           </article>
 
@@ -632,9 +484,8 @@
             <div class="feature-icon">🎁</div>
             <h3>Dags för julklappar</h3>
             <p>
-              Tomten delar ut familjens färdigförberedda
-              julklappar, eller får hjälp med namnen av
-              någon i familjen.
+              Tomten delar ut familjens färdigförberedda julklappar.
+              En vuxen får gärna hjälpa till med namn och ordning om det behövs.
             </p>
           </article>
         </div>
@@ -646,10 +497,7 @@
         <div class="section-heading">
           <div class="eyebrow">Tydliga priser</div>
           <h2>Välj ert tomtebesök</h2>
-          <p>
-            Välj upplägget som passar er familj.
-            Alla besök behöver bokas i förväg.
-          </p>
+          <p>Välj upplägget som passar er familj. Alla besök behöver bokas i förväg.</p>
         </div>
 
         <div class="pricing-grid">
@@ -657,14 +505,14 @@
             <div class="eyebrow">Klassiskt besök</div>
             <h3>Tomten knackar på</h3>
             <div class="price">750 kr</div>
-            <p>Ca 10–15 minuter</p>
+            <p>Ca 5–10 minuter</p>
             <ul>
-              <li>Tomten kommer till dörren</li>
-              <li>Hälsar på familjen</li>
-              <li>Delar ut förberedda julklappar</li>
-              <li>En mysig julhälsning</li>
+              <li>Tomten knackar på och hälsar</li>
+              <li>Ett mysigt möte vid dörren</li>
+              <li>Utdelning av förberedda julklappar</li>
+              <li>En klassisk julhälsning</li>
             </ul>
-            <a class="button" href="#boka">Fråga om detta</a>
+            <a class="button" href="#boka" data-package="Tomten knackar på – 750 kr">Välj klassiskt</a>
           </article>
 
           <article class="price-card featured">
@@ -674,33 +522,33 @@
             <p>Ca 10–15 minuter</p>
             <ul>
               <li>Allt i det klassiska besöket</li>
-              <li>Tomten går runt trädgården</li>
-              <li>Letar efter rätt hus</li>
+              <li>Tomten kommer gående utifrån</li>
+              <li>Vinkar och går fram till huset</li>
               <li>En extra stämningsfull ankomst</li>
             </ul>
-            <a class="button" href="#boka">Fråga om detta</a>
+            <a class="button" href="#boka" data-package="Tomten kommer utifrån – 900 kr">Välj detta besök</a>
           </article>
 
           <article class="price-card">
-            <div class="eyebrow">Ett längre besök</div>
+            <div class="eyebrow">Premiumbesök</div>
             <h3>Tomten stannar inne</h3>
-            <div class="price">1 000 kr</div>
+            <div class="price">1 200 kr</div>
             <p>Ca 15–20 minuter</p>
             <ul>
-              <li>Tomten kommer in i hemmet</li>
-              <li>Sitter på en stol eller i en fåtölj</li>
-              <li>Pratar med barnen och familjen</li>
-              <li>Delar ut julklapparna i lugn och ro</li>
+              <li>Tomten kommer in och hälsar</li>
+              <li>Mer tid för samtal med familjen</li>
+              <li>Sitter i vardagsrummet om ni önskar</li>
+              <li>Delar ut julklapparna en och en</li>
+              <li>Möjlighet för familjen att ta egna bilder</li>
             </ul>
-            <a class="button" href="#boka">Fråga om detta</a>
+            <a class="button" href="#boka" data-package="Tomten stannar inne – 1 200 kr">Välj premium</a>
           </article>
         </div>
 
         <p class="price-note">
-          Priserna för de två extra uppläggen är förslag som
-          kan ändras innan bokningen öppnar. Besökstid och
-          upplägg bekräftas alltid i förväg. Resor utanför
-          närområdet kan behöva ett separat pristillägg.
+          Besökstiderna är ungefärliga och kan variera beroende på familjens storlek,
+          antalet barn och hur julklappsutdelningen går till. Upplägg, tid och pris
+          bekräftas innan bokningen är klar. Besöken erbjuds i Vega.
         </p>
       </div>
     </section>
@@ -708,21 +556,16 @@
     <section id="utrustning">
       <div class="section-inner equipment">
         <div>
-          <img
-            src="tomteutrustning.jpg"
-            alt="Tomtens dräkt, säck, lykta, handskar och övrig utrustning"
-            loading="lazy"
-          >
+          <img src="tomteutrustning.jpg" alt="Tomtens dräkt, säck, lykta, handskar och övrig utrustning" loading="lazy">
         </div>
 
         <div>
           <div class="eyebrow">En klassisk jultomte</div>
           <h2>Förberedd för julens stora stund</h2>
           <p class="muted">
-            Jag börjar min egen tomteresa med inspiration
-            från min pappa, som har varit tomte i många år.
-            Jag vill skapa ett varmt, lugnt och roligt besök
-            för familjer i mitt närområde.
+            Jag börjar min egen tomteresa med inspiration från min pappa, som har
+            varit tomte i många år. Jag vill skapa ett varmt, lugnt och roligt besök
+            för familjer i Vega.
           </p>
 
           <ul class="equipment-list">
@@ -747,20 +590,20 @@
           <div class="eyebrow">Julafton 2026</div>
           <h2>Ska tomten besöka er?</h2>
           <p>
-            Skicka en förfrågan med önskad tid, område
-            och vilket besök ni vill boka. Jag återkommer
-            via mejl för att stämma av detaljerna.
+            Skicka en förfrågan med kontaktuppgifter, adress, önskad tid och vilket
+            besök ni vill boka. Jag återkommer via mejl för att stämma av detaljerna.
           </p>
+
           <p>
             <strong style="color:var(--gold)">Område:</strong><br>
-            Vega med omnejd.
+            Vega
           </p>
+
           <p>
             <strong style="color:var(--gold)">Kontakt:</strong><br>
-            <a href="mailto:Hugo.skoglund09@Outlook.com">
-              Hugo.skoglund09@Outlook.com
-            </a>
+            <a href="mailto:Hugo.skoglund09@Outlook.com">Hugo.skoglund09@Outlook.com</a>
           </p>
+
           <p class="muted">
             En förfrågan är inte en bekräftad bokning.
             Du får svar innan besöket är bestämt.
@@ -773,26 +616,31 @@
           <div class="form-row">
             <div>
               <label for="name">Namn</label>
-              <input id="name" name="name" required
-                     autocomplete="name"
-                     placeholder="Ditt namn">
+              <input id="name" name="name" required autocomplete="name" placeholder="Ditt namn">
             </div>
 
             <div>
               <label for="email">Din e-post</label>
-              <input id="email" name="email" type="email"
-                     required autocomplete="email"
-                     placeholder="namn@exempel.se">
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="namn@exempel.se">
             </div>
           </div>
 
           <div class="form-row">
             <div>
-              <label for="area">Område</label>
-              <input id="area" name="area" required
-                     placeholder="T.ex. Vega">
+              <label for="phone">Telefonnummer</label>
+              <input id="phone" name="phone" type="tel" required autocomplete="tel" placeholder="Ditt telefonnummer">
             </div>
 
+            <div>
+              <label for="date">Önskat datum</label>
+              <input id="date" name="date" type="date" required min="2026-12-24" max="2026-12-24" value="2026-12-24">
+            </div>
+          </div>
+
+          <label for="address">Gatuadress i Vega</label>
+          <input id="address" name="address" required autocomplete="street-address" placeholder="Gatuadress och nummer">
+
+          <div class="form-row">
             <div>
               <label for="time">Önskad tid</label>
               <select id="time" name="time" required>
@@ -803,29 +651,29 @@
                 <option>Jag är flexibel</option>
               </select>
             </div>
+
+            <div>
+              <label for="package">Önskat besök</label>
+              <select id="package" name="package" required>
+                <option value="">Välj ett upplägg</option>
+                <option>Tomten knackar på – 750 kr</option>
+                <option>Tomten kommer utifrån – 900 kr</option>
+                <option>Tomten stannar inne – 1 200 kr</option>
+                <option>Jag vill diskutera upplägget</option>
+              </select>
+            </div>
           </div>
 
-          <label for="package">Önskat besök</label>
-          <select id="package" name="package" required>
-            <option value="">Välj ett upplägg</option>
-            <option>Tomten knackar på – 750 kr</option>
-            <option>Tomten kommer utifrån – 900 kr</option>
-            <option>Tomten stannar inne – 1 000 kr</option>
-            <option>Jag vill diskutera upplägget</option>
-          </select>
+          <label for="details">Övrig information (valfritt)</label>
+          <textarea id="details" name="details" placeholder="Exempelvis antal barn, ungefärliga åldrar, julklappsutdelning eller andra önskemål. Skriv inte känsliga personuppgifter."></textarea>
 
-          <label for="details">Övrig information</label>
-          <textarea id="details" name="details"
-            placeholder="Exempelvis antal barn, ungefärliga åldrar, paketutdelning eller önskemål. Skriv inte känsliga personuppgifter."></textarea>
-
-          <button class="button" type="submit"
-            style="width:100%;margin-top:22px">
+          <button class="button" type="submit" style="width:100%;margin-top:22px">
             Skapa bokningsmejl →
           </button>
 
           <p class="form-note">
-            Knappen öppnar ditt vanliga mejlprogram med
-            uppgifterna ifyllda. Inget skickas automatiskt.
+            Knappen öppnar ditt vanliga mejlprogram med uppgifterna ifyllda.
+            Du behöver själv skicka mejlet. Inget skickas automatiskt.
           </p>
         </form>
       </div>
@@ -842,44 +690,50 @@
           <details>
             <summary>Behöver vi ha julklapparna klara?</summary>
             <p>
-              Ja. Lägg fram paketen på en bestämd plats
-              innan besöket och märk dem tydligt med namn.
-              Då kan tomten dela ut dem smidigt.
+              Ja. Lägg fram paketen på en bestämd plats innan besöket och märk dem
+              tydligt med namn. Då kan tomten dela ut dem smidigt.
             </p>
           </details>
 
           <details>
             <summary>Kan tomten komma runt trädgården?</summary>
             <p>
-              Ja, det kan ordnas om ni väljer upplägget
-              där tomten anländer utifrån. Berätta gärna
-              om förutsättningarna vid bokningen.
+              Ja, det ingår i upplägget där tomten kommer utifrån.
+              Berätta gärna om förutsättningarna vid bokningen.
             </p>
           </details>
 
           <details>
             <summary>Kan tomten komma in i vardagsrummet?</summary>
             <p>
-              Ja, välj det längre besöket och skriv era
-              önskemål i förfrågan. Alla detaljer bekräftas
-              i förväg.
+              Ja, vardagsrumsbesök och mer tid tillsammans ingår i premiumbesöket.
+              Skriv gärna eventuella önskemål i bokningsförfrågan.
             </p>
+          </details>
+
+          <details>
+            <summary>Kan vi ta bilder med tomten?</summary>
+            <p>Ni får gärna ta egna bilder om ni vill. Bilder tas bara om familjen önskar det.</p>
           </details>
 
           <details>
             <summary>Är min bokning klar när jag mejlar?</summary>
             <p>
-              Nej. Bokningen är klar först när ni fått
-              ett svar och båda parter har bekräftat tid,
-              plats och pris.
+              Nej. Bokningen är klar först när ni fått ett svar och båda parter
+              har bekräftat tid, plats och pris.
             </p>
           </details>
 
           <details>
             <summary>Var utförs besöken?</summary>
+            <p>Besöken erbjuds i Vega.</p>
+          </details>
+
+          <details>
+            <summary>Hur lång tid tar besöket?</summary>
             <p>
-              I första hand i Vega. Fråga
-              gärna om ni bor i ett närliggande område.
+              Tiderna är ungefärliga. Den faktiska längden kan variera beroende på
+              familjens storlek, antalet barn och hur julklappsutdelningen går till.
             </p>
           </details>
         </div>
@@ -891,33 +745,38 @@
     <div class="footer-logo">🎅 Jultomten i Vega</div>
     <p>En varm julhälsning till stora och små.</p>
     <p style="margin-top:8px">
-      <a href="mailto:Hugo.skoglund09@Outlook.com">
-        Kontakta tomten via mejl
-      </a>
+      <a href="mailto:Hugo.skoglund09@Outlook.com">Kontakta tomten via mejl</a>
     </p>
-    <p style="margin-top:18px">
-      © <span id="year">2026</span> · Julen 2026
-    </p>
+    <p style="margin-top:18px">© 2026 · Julen 2026</p>
   </footer>
 
   <script>
     const form = document.getElementById("booking-form");
+    const packageSelect = document.getElementById("package");
 
-    form.addEventListener("submit", function (event) {
+    // Paketknapparna väljer automatiskt rätt paket i formuläret.
+    document.querySelectorAll("[data-package]").forEach((button) => {
+      button.addEventListener("click", () => {
+        packageSelect.value = button.dataset.package;
+      });
+    });
+
+    form.addEventListener("submit", function(event) {
       event.preventDefault();
 
       if (!form.reportValidity()) return;
 
       const data = new FormData(form);
-
       const subject = "Tomtebesök – bokningsförfrågan 2026";
 
       const body = [
-        "Hej! Jag vill fråga om ett tomtebesök.",
+        "Hej! Jag vill skicka en bokningsförfrågan om ett tomtebesök.",
         "",
         "Namn: " + data.get("name"),
         "E-post: " + data.get("email"),
-        "Område: " + data.get("area"),
+        "Telefonnummer: " + data.get("phone"),
+        "Adress i Vega: " + data.get("address"),
+        "Önskat datum: " + data.get("date"),
         "Önskad tid: " + data.get("time"),
         "Önskat besök: " + data.get("package"),
         "",
@@ -928,7 +787,7 @@
       ].join("\n");
 
       const mailto =
-        "mailto:hugo.skoglund09@Outlook.com" +
+        "mailto:Hugo.skoglund09@Outlook.com" +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
 
