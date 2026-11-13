@@ -775,7 +775,8 @@
 
           <p class="muted">
             En förfrågan är inte en bekräftad bokning.
-            Du får svar innan besöket är bestämt.
+            Du får svar innan besöket är bestämt. Starttider visas i 15-minuterssteg;
+            önskad tid måste godkännas manuellt och kan påverkas av restid och andra bokningar.
           </p>
         </div>
 
@@ -811,23 +812,28 @@
 
           <div class="form-row">
             <div>
-              <label for="time">Önskad tidsperiod</label>
-              <select id="time" name="time" required>
+              <label for="period">Period</label>
+              <select id="period" name="period" required>
                 <option value="">Välj först datum</option>
               </select>
             </div>
-
             <div>
-              <label for="package">Önskat besök</label>
-              <select id="package" name="package" required>
-                <option value="">Välj ett upplägg</option>
-                <option>Tomten knackar på – 600 kr</option>
-                <option>Tomten kommer utifrån – 800 kr</option>
-                <option>Tomten stannar inne – 1 000 kr</option>
-                <option>Jag vill diskutera upplägget</option>
+              <label for="time">Önskad starttid</label>
+              <select id="time" name="time" required>
+                <option value="">Välj period först</option>
               </select>
             </div>
           </div>
+
+          <label for="package">Önskat besök</label>
+          <select id="package" name="package" required>
+            <option value="">Välj ett upplägg</option>
+            <option value="Tomten knackar på – 600 kr">Tomten knackar på – 600 kr (ca 5–10 min)</option>
+            <option value="Tomten kommer utifrån – 800 kr">Tomten kommer utifrån – 800 kr (ca 10–15 min)</option>
+            <option value="Tomten stannar inne – 1 000 kr">Tomten stannar inne – 1 000 kr (ca 15–20 min)</option>
+            <option value="Jag vill diskutera upplägget">Jag vill diskutera upplägget (upp till ca 20 min)</option>
+          </select>
+          <p class="form-note" id="duration-note">Välj ett paket för att se ungefärlig besökstid.</p>
 
           <label for="details">Övrig information (valfritt)</label>
           <textarea id="details" name="details" placeholder="Exempelvis antal barn, ungefärliga åldrar, julklappsutdelning eller andra önskemål. Skriv inte känsliga personuppgifter."></textarea>
@@ -919,27 +925,80 @@
     const form = document.getElementById("booking-form");
     const packageSelect = document.getElementById("package");
     const dateInput = document.getElementById("date");
+    const periodSelect = document.getElementById("period");
     const timeSelect = document.getElementById("time");
+    const durationNote = document.getElementById("duration-note");
 
-    const timeWindows = {
-      "2026-12-23": ["14:00–17:00"],
-      "2026-12-24": ["13:00–15:00", "16:30–18:00"],
-      "2026-12-25": ["14:00–17:00"]
+    const bookingPeriods = {
+      "2026-12-23": [{ label: "Eftermiddag", start: "14:00", end: "17:00" }],
+      "2026-12-24": [
+        { label: "Första perioden (före Kalle Anka)", start: "13:00", end: "15:00" },
+        { label: "Andra perioden (efter Kalle Anka)", start: "16:30", end: "18:00" }
+      ],
+      "2026-12-25": [{ label: "Eftermiddag", start: "14:00", end: "17:00" }]
     };
 
-    function updateTimeOptions() {
-      const windows = timeWindows[dateInput.value] || [];
-      timeSelect.innerHTML = '<option value="">Välj tidsperiod</option>';
-      windows.forEach((windowLabel) => {
-        const option = document.createElement("option");
-        option.value = windowLabel;
-        option.textContent = windowLabel;
-        timeSelect.appendChild(option);
-      });
+    const packageDurations = {
+      "Tomten knackar på – 600 kr": "Cirka 5–10 minuter",
+      "Tomten kommer utifrån – 800 kr": "Cirka 10–15 minuter",
+      "Tomten stannar inne – 1 000 kr": "Cirka 15–20 minuter",
+      "Jag vill diskutera upplägget": "Planera för upp till cirka 20 minuter"
+    };
+
+    function minutesFromTime(value) {
+      const [hours, minutes] = value.split(":").map(Number);
+      return hours * 60 + minutes;
     }
 
-    dateInput.addEventListener("change", updateTimeOptions);
-    updateTimeOptions();
+    function timeFromMinutes(value) {
+      const hours = String(Math.floor(value / 60)).padStart(2, "0");
+      const minutes = String(value % 60).padStart(2, "0");
+      return hours + ":" + minutes;
+    }
+
+    function updatePeriodOptions() {
+      const periods = bookingPeriods[dateInput.value] || [];
+      periodSelect.innerHTML = '<option value="">Välj period</option>';
+      periods.forEach((period, index) => {
+        const option = document.createElement("option");
+        option.value = String(index);
+        option.textContent = period.label + " · " + period.start + "–" + period.end;
+        periodSelect.appendChild(option);
+      });
+      updateStartTimes();
+    }
+
+    function updateStartTimes() {
+      const periods = bookingPeriods[dateInput.value] || [];
+      const selectedPeriod = periods[Number(periodSelect.value)];
+      const selectedPackage = packageSelect.value;
+      const maxDuration = selectedPackage.includes("600 kr") ? 10 :
+        selectedPackage.includes("800 kr") ? 15 : 20;
+
+      timeSelect.innerHTML = '<option value="">Välj starttid</option>';
+      if (!selectedPeriod) return;
+
+      const start = minutesFromTime(selectedPeriod.start);
+      const end = minutesFromTime(selectedPeriod.end);
+      for (let minute = start; minute + maxDuration <= end; minute += 15) {
+        const option = document.createElement("option");
+        option.value = timeFromMinutes(minute);
+        option.textContent = timeFromMinutes(minute);
+        timeSelect.appendChild(option);
+      }
+    }
+
+    function updateDurationNote() {
+      durationNote.textContent = packageDurations[packageSelect.value] ||
+        "Välj ett paket för att se ungefärlig besökstid.";
+      updateStartTimes();
+    }
+
+    dateInput.addEventListener("change", updatePeriodOptions);
+    periodSelect.addEventListener("change", updateStartTimes);
+    packageSelect.addEventListener("change", updateDurationNote);
+    updatePeriodOptions();
+    updateDurationNote();
 
     // Paketknapparna väljer automatiskt rätt paket i formuläret.
     document.querySelectorAll("[data-package]").forEach((button) => {
@@ -964,8 +1023,10 @@
         "Telefonnummer: " + data.get("phone"),
         "Adress i Vega: " + data.get("address"),
         "Önskat datum: " + data.get("date"),
-        "Önskad tid: " + data.get("time"),
+        "Önskad period: " + data.get("period"),
+        "Önskad starttid: " + data.get("time"),
         "Önskat besök: " + data.get("package"),
+        "Ungefärlig besökstid: " + (packageDurations[data.get("package")] || "Stäms av"),
         "",
         "Övrig information:",
         data.get("details") || "Inga ytterligare önskemål.",
