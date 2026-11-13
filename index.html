@@ -343,6 +343,37 @@
       text-align: center;
     }
 
+    .calendar-section { background: #0b211a; }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .calendar-day {
+      padding: 25px;
+      background: var(--panel);
+      border: 1px solid rgba(232,199,123,.24);
+      border-radius: 8px;
+    }
+    .calendar-day h3 { color: var(--gold); margin-top: 0; }
+    .calendar-date { color: var(--muted); font-family: Arial, sans-serif; font-size: .9rem; }
+    .time-window {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-family: Arial, sans-serif;
+    }
+    .time-window strong { color: var(--gold); white-space: nowrap; }
+    .calendar-note {
+      max-width: 780px;
+      margin: 25px auto 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .9rem;
+    }
+
     .booking-section {
       background:
         linear-gradient(rgba(12,35,27,.94),rgba(12,35,27,.97)),
@@ -479,6 +510,7 @@
         <a href="#besok">Besöket</a>
         <a href="#priser">Priser</a>
         <a href="#utrustning">Om tomten</a>
+        <a href="#kalender">Datum & tider</a>
         <a href="#boka">Boka</a>
       </div>
     </nav>
@@ -681,7 +713,45 @@
           </div>
         </div>
       </div>
+    </section>
 
+    <section class="calendar-section" id="kalender">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="eyebrow">Julen 2026</div>
+          <h2>Datum och bokningstider</h2>
+          <p>Här ser ni vilka tidsperioder tomten tar emot bokningsförfrågningar.</p>
+        </div>
+
+        <div class="calendar-grid">
+          <article class="calendar-day">
+            <div class="calendar-date">ONSDAG</div>
+            <h3>23 december</h3>
+            <div class="time-window"><span>Eftermiddag</span><strong>14:00–17:00</strong></div>
+          </article>
+
+          <article class="calendar-day">
+            <div class="calendar-date">TORSDAG · JULAFTON</div>
+            <h3>24 december</h3>
+            <div class="time-window"><span>Första perioden</span><strong>13:00–15:00</strong></div>
+            <div class="time-window"><span>Kalle Anka-paus</span><strong>15:00–16:30</strong></div>
+            <div class="time-window"><span>Andra perioden</span><strong>16:30–18:00</strong></div>
+          </article>
+
+          <article class="calendar-day">
+            <div class="calendar-date">FREDAG</div>
+            <h3>25 december</h3>
+            <div class="time-window"><span>Eftermiddag</span><strong>14:00–17:00</strong></div>
+          </article>
+        </div>
+
+        <p class="calendar-note">
+          Tiderna visar när besök kan planeras. Exakt besökstid bestäms personligen
+          efter att vi har stämt av adress, resväg och önskat paket. En bokning är
+          inte bekräftad förrän ni fått ett personligt svar.
+        </p>
+      </div>
+    </section>
 
     <section class="booking-section" id="boka">
       <div class="section-inner booking-layout">
@@ -741,13 +811,9 @@
 
           <div class="form-row">
             <div>
-              <label for="time">Önskad tid</label>
+              <label for="time">Önskad tidsperiod</label>
               <select id="time" name="time" required>
-                <option value="">Välj tidsönskemål</option>
-                <option>Förmiddag</option>
-                <option>Tidig eftermiddag</option>
-                <option>Sen eftermiddag</option>
-                <option>Jag är flexibel</option>
+                <option value="">Välj först datum</option>
               </select>
             </div>
 
@@ -852,6 +918,28 @@
   <script>
     const form = document.getElementById("booking-form");
     const packageSelect = document.getElementById("package");
+    const dateInput = document.getElementById("date");
+    const timeSelect = document.getElementById("time");
+
+    const timeWindows = {
+      "2026-12-23": ["14:00–17:00"],
+      "2026-12-24": ["13:00–15:00", "16:30–18:00"],
+      "2026-12-25": ["14:00–17:00"]
+    };
+
+    function updateTimeOptions() {
+      const windows = timeWindows[dateInput.value] || [];
+      timeSelect.innerHTML = '<option value="">Välj tidsperiod</option>';
+      windows.forEach((windowLabel) => {
+        const option = document.createElement("option");
+        option.value = windowLabel;
+        option.textContent = windowLabel;
+        timeSelect.appendChild(option);
+      });
+    }
+
+    dateInput.addEventListener("change", updateTimeOptions);
+    updateTimeOptions();
 
     // Paketknapparna väljer automatiskt rätt paket i formuläret.
     document.querySelectorAll("[data-package]").forEach((button) => {
