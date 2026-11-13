@@ -284,6 +284,65 @@
 
     .equipment-list li::before { content: "🎄 "; }
 
+    .equipment-display {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(220px,1.2fr) minmax(0,1fr);
+      grid-template-areas:
+        ". mask ."
+        "sack coat lantern"
+        ". belt ."
+        ". trousers .";
+      gap: 18px;
+      align-items: stretch;
+      max-width: 900px;
+      margin: 38px auto 0;
+      position: relative;
+    }
+
+    .equipment-piece {
+      min-width: 0;
+      padding: 16px;
+      text-align: center;
+      background: var(--panel);
+      border: 1px solid rgba(232,199,123,.2);
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .equipment-piece img {
+      width: 100%;
+      height: 155px;
+      object-fit: contain;
+      border-radius: 5px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .equipment-piece h3 {
+      margin: 12px 0 4px;
+      color: var(--gold);
+      font-size: 1.12rem;
+    }
+
+    .equipment-piece p {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: .85rem;
+    }
+
+    .equipment-piece.mask { grid-area: mask; }
+    .equipment-piece.coat { grid-area: coat; }
+    .equipment-piece.belt { grid-area: belt; }
+    .equipment-piece.trousers { grid-area: trousers; }
+    .equipment-piece.lantern { grid-area: lantern; align-self: center; }
+    .equipment-piece.sack { grid-area: sack; align-self: center; }
+
+    .equipment-intro {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
     .booking-section {
       background:
         linear-gradient(rgba(12,35,27,.94),rgba(12,35,27,.97)),
@@ -554,35 +613,75 @@
     </section>
 
     <section id="utrustning">
-      <div class="section-inner equipment">
-        <div>
-          <img src="tomteutrustning.jpg" alt="Tomtens dräkt, säck, lykta, handskar och övrig utrustning" loading="lazy">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="eyebrow">En klassisk jultomte</div>
+          <h2>Tomtens dräkt och utrustning</h2>
+          <p>Här kan ni se några av delarna som hör till tomtens klassiska julutstyrsel.</p>
         </div>
 
-        <div>
-          <div class="eyebrow">En klassisk jultomte</div>
-          <h2>Förberedd för julens stora stund</h2>
-          <p class="muted">
-            Jag börjar min egen tomteresa med inspiration från min pappa, som har
-            varit tomte i många år. Jag vill skapa ett varmt, lugnt och roligt besök
-            för familjer i Vega.
-          </p>
+        <p class="equipment-intro">
+          Delarna visas var för sig så att ni enkelt kan se dräkten och tillbehören.
+          Bilderna visar utrustningen som används för att skapa en traditionell tomtekänsla.
+        </p>
 
-          <ul class="equipment-list">
-            <li>Klassisk röd tomtedräkt</li>
-            <li>Skägg, luva och tomtemask</li>
-            <li>Tomtesäck för julklapparna</li>
-            <li>Svart bälte, handskar och skor</li>
-            <li>Lykta för den stämningsfulla ankomsten</li>
-          </ul>
+        <div class="equipment-display">
+          <article class="equipment-piece mask">
+            <img src="mask.jpg" alt="Tomtens mask" loading="lazy">
+            <h3>Masken</h3>
+            <p>En del av tomtens klassiska utstyrsel</p>
+          </article>
 
-          <p class="muted">
-            Familjen förbereder julklapparna i förväg.
-            Jag står för tomtebesöket och julstämningen.
-          </p>
+          <article class="equipment-piece coat">
+            <img src="rock.jpg" alt="Tomtens röda rock" loading="lazy">
+            <h3>Tomterocken</h3>
+            <p>Den röda rocken som hör till tomtedräkten</p>
+          </article>
+
+          <article class="equipment-piece belt">
+            <img src="bälte.jpg" alt="Tomtens bälte" loading="lazy">
+            <h3>Bältet</h3>
+            <p>En detalj som kompletterar dräkten</p>
+          </article>
+
+          <article class="equipment-piece trousers">
+            <img src="byxor.jpg" alt="Tomtens byxor" loading="lazy">
+            <h3>Byxorna</h3>
+            <p>En del av den klassiska tomtedräkten</p>
+          </article>
+
+          <article class="equipment-piece lantern">
+            <img src="lyckta.jpg" alt="Tomtens lykta" loading="lazy">
+            <h3>Lyktan</h3>
+            <p>En stämningsfull detalj vid ankomsten</p>
+          </article>
+
+          <article class="equipment-piece sack">
+            <img src="säck.jpg" alt="Tomtens säck" loading="lazy">
+            <h3>Tomtesäcken</h3>
+            <p>För familjens förberedda julklappar</p>
+          </article>
+        </div>
+
+        <div class="equipment" style="margin-top:55px">
+          <div>
+            <div class="eyebrow">Bakom tomterollen</div>
+            <h2>En jultradition som går vidare</h2>
+            <p class="muted">
+              Jag börjar min egen tomteresa med inspiration från min pappa, som har
+              varit tomte i många år. Jag vill skapa ett varmt, lugnt och roligt besök
+              för familjer i Vega.
+            </p>
+          </div>
+          <div>
+            <p class="muted">
+              Familjen förbereder julklapparna i förväg. Jag står för tomtebesöket
+              och julstämningen, och upplägget anpassas efter familjens önskemål.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
+
 
     <section class="booking-section" id="boka">
       <div class="section-inner booking-layout">
