@@ -770,7 +770,7 @@
 
           <p>
             <strong style="color:var(--gold)">Kontakt:</strong><br>
-            <a href="mailto:Hugo.skoglund09@Outlook.com">Hugo.skoglund09@Outlook.com</a>
+            <a href="mailto:hu1go.business@gmail.com">hu1go.business@gmail.com</a>
           </p>
 
           <p class="muted">
@@ -916,7 +916,7 @@
     <div class="footer-logo">🎅 Jultomten i Vega</div>
     <p>En varm julhälsning till stora och små.</p>
     <p style="margin-top:8px">
-      <a href="mailto:Hugo.skoglund09@Outlook.com">Kontakta tomten via mejl</a>
+      <a href="mailto:hu1go.business@gmail.com">Kontakta tomten via mejl</a>
     </p>
     <p style="margin-top:18px">© 2026 · Julen 2026</p>
   </footer>
@@ -1015,18 +1015,23 @@
       const data = new FormData(form);
       const subject = "Tomtebesök – bokningsförfrågan 2026";
 
+      const selectedPeriods = bookingPeriods[data.get("date")] || [];
+      const selectedPeriod = selectedPeriods[Number(data.get("period"))];
+      const formattedDate = new Date(data.get("date") + "T12:00:00")
+        .toLocaleDateString("sv-SE", { day: "numeric", month: "long", year: "numeric" });
+
       const body = [
         "Hej! Jag vill skicka en bokningsförfrågan om ett tomtebesök.",
         "",
         "Namn: " + data.get("name"),
         "E-post: " + data.get("email"),
         "Telefonnummer: " + data.get("phone"),
-        "Adress i Vega: " + data.get("address"),
-        "Önskat datum: " + data.get("date"),
-        "Önskad period: " + data.get("period"),
+        "Önskat datum: " + formattedDate,
+        "Önskad period: " + (selectedPeriod ? selectedPeriod.label : "Ej vald"),
         "Önskad starttid: " + data.get("time"),
         "Önskat besök: " + data.get("package"),
         "Ungefärlig besökstid: " + (packageDurations[data.get("package")] || "Stäms av"),
+        "Adress: " + data.get("address"),
         "",
         "Övrig information:",
         data.get("details") || "Inga ytterligare önskemål.",
@@ -1035,7 +1040,7 @@
       ].join("\n");
 
       const mailto =
-        "mailto:Hugo.skoglund09@Outlook.com" +
+        "mailto:hu1go.business@gmail.com" +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
 
