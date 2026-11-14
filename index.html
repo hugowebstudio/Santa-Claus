@@ -187,6 +187,31 @@
       box-shadow: 0 1px 3px rgba(0,0,0,.2);
     }
 
+    .christmas-trim {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: clamp(18px, 4vw, 42px);
+      padding: 17px 20px 21px;
+      color: var(--gold);
+      background: linear-gradient(90deg, transparent, rgba(232,199,123,.07), transparent);
+      border-top: 1px solid rgba(232,199,123,.13);
+      border-bottom: 1px solid rgba(232,199,123,.13);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1;
+    }
+
+    .christmas-trim span {
+      display: inline-block;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,.22));
+      transition: transform .2s ease;
+    }
+
+    .christmas-trim span:hover {
+      transform: translateY(-3px) rotate(-5deg);
+    }
+
     .hero-copy {
       max-width: 550px;
       color: var(--muted);
@@ -628,6 +653,15 @@
         </div>
       </div>
     </section>
+
+    <div class="christmas-trim" aria-hidden="true">
+      <span title="Polkagris">🍬</span>
+      <span title="Pepparkaka">🍪</span>
+      <span title="Julgran">🎄</span>
+      <span title="Julstjärna">⭐</span>
+      <span title="Julklapp">🎁</span>
+      <span title="Polkagris">🍭</span>
+    </div>
 
     <section id="besok">
       <div class="section-inner">
