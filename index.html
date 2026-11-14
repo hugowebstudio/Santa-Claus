@@ -30,6 +30,36 @@
     a { color: inherit; text-decoration: none; }
     img { display: block; width: 100%; object-fit: cover; }
 
+    .snowfall {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -8vh;
+      left: var(--snow-left);
+      color: rgba(255, 250, 238, .78);
+      font-family: Arial, sans-serif;
+      font-size: var(--snow-size);
+      line-height: 1;
+      text-shadow: 0 1px 5px rgba(255,255,255,.18);
+      animation: snow-fall var(--snow-duration) linear var(--snow-delay) infinite;
+      will-change: transform;
+    }
+
+    @keyframes snow-fall {
+      from { transform: translate3d(0, -5vh, 0) rotate(0deg); }
+      to { transform: translate3d(var(--snow-drift), 115vh, 0) rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .snowfall { display: none; }
+    }
+
     .announcement {
       padding: 9px 16px;
       text-align: center;
@@ -103,6 +133,58 @@
     }
 
     h1 span { color: var(--gold); }
+
+    .hat-letter {
+      position: relative;
+      display: inline-block;
+    }
+
+    .santa-hat {
+      position: absolute;
+      z-index: 2;
+      width: .62em;
+      height: .48em;
+      top: -.36em;
+      left: -.08em;
+      transform: rotate(-19deg);
+      pointer-events: none;
+    }
+
+    .santa-hat::before {
+      content: "";
+      position: absolute;
+      left: .08em;
+      bottom: .09em;
+      width: .48em;
+      height: .39em;
+      background: #b92f3b;
+      clip-path: polygon(8% 100%, 100% 100%, 76% 0);
+      border-radius: 45% 45% 8% 8%;
+    }
+
+    .santa-hat::after {
+      content: "";
+      position: absolute;
+      top: -.01em;
+      right: .01em;
+      width: .15em;
+      height: .15em;
+      border-radius: 50%;
+      background: #fff8ec;
+      box-shadow: 0 1px 3px rgba(0,0,0,.18);
+    }
+
+    .santa-hat-brim {
+      position: absolute;
+      z-index: 1;
+      left: .02em;
+      bottom: .04em;
+      width: .58em;
+      height: .12em;
+      border-radius: 50%;
+      background: #fff8ec;
+      box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
 
     .hero-copy {
       max-width: 550px;
@@ -499,6 +581,8 @@
 </head>
 
 <body>
+  <div class="snowfall" aria-hidden="true"></div>
+
   <div class="announcement">
     🎄 Julen 2026 · Bokningsförfrågningar för Vega
   </div>
@@ -520,7 +604,7 @@
     <section class="hero" id="hem">
       <div>
         <div class="eyebrow">En magisk jul hemma hos er</div>
-        <h1>Ho, ho, ho!<br><span>Tomten kommer!</span></h1>
+        <h1><span class="hat-letter">H<span class="santa-hat" aria-hidden="true"><span class="santa-hat-brim"></span></span></span>o, ho, ho!<br><span>Tomten kommer!</span></h1>
         <p class="hero-copy">
           Gör julafton lite extra speciell med ett mysigt tomtebesök hemma hos er.
           Jag besöker familjer i Vega och hjälper till att skapa en varm och
@@ -928,6 +1012,23 @@
     const periodSelect = document.getElementById("period");
     const timeSelect = document.getElementById("time");
     const durationNote = document.getElementById("duration-note");
+
+    // Diskreta snöflingor i olika storlekar som faller över sidan.
+    const snowfall = document.querySelector(".snowfall");
+    if (snowfall && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      for (let i = 0; i < 22; i++) {
+        const flake = document.createElement("span");
+        flake.className = "snowflake";
+        flake.textContent = "❄";
+        flake.style.setProperty("--snow-left", (Math.random() * 100) + "vw");
+        flake.style.setProperty("--snow-size", (9 + Math.random() * 13) + "px");
+        flake.style.setProperty("--snow-duration", (13 + Math.random() * 17) + "s");
+        flake.style.setProperty("--snow-delay", (-Math.random() * 25) + "s");
+        flake.style.setProperty("--snow-drift", ((Math.random() - 0.5) * 100) + "px");
+        flake.style.opacity = (0.28 + Math.random() * 0.48).toFixed(2);
+        snowfall.appendChild(flake);
+      }
+    }
 
     const bookingPeriods = {
       "2026-12-23": [{ label: "Eftermiddag", start: "14:00", end: "17:00" }],
